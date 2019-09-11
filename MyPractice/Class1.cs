@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MyPractice
 {
     class Class1
     {
-        public int Multi()
+        public static int Multi()
         {
             Console.WriteLine("enter Count of Number ");
             string count = Console.ReadLine();
@@ -32,7 +33,7 @@ namespace MyPractice
         }
 
 
-        public void Read(string textFile)
+        public static void Read(string textFile)
         {
             Console.WriteLine("enter the Directory name ");
             string dir = Console.ReadLine();
@@ -56,7 +57,7 @@ namespace MyPractice
                 Console.WriteLine("file doesnot Exists");
             }
         }
-        public List<string> Iteration()
+        public static List<string> Iteration()
         {
             List<string> ls = new List<string>(10);
             ls.Add("one");
@@ -65,6 +66,79 @@ namespace MyPractice
             ls.Add("four");
 
             return ls;
+        }
+        public void final()
+        {
+            bool exit = true;
+            do
+
+            {
+                Console.WriteLine("1:For Multiplication");
+                Console.WriteLine("2:For reading Text File");
+                Console.WriteLine("3:for reading properties of a c# object");
+                Console.WriteLine("4:For properies");
+                Console.WriteLine("5:Exit");
+                string input = Console.ReadLine();
+                int value3 = Convert.ToInt32(input);
+
+                switch (value3)
+                {
+                    case 1:
+                        int result2 = Multi();
+                        Console.WriteLine(result2);
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.WriteLine("ENTER TEXT FILE NAME");
+                        string filename = Console.ReadLine();
+
+                        Read(filename);
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine("listIteration  is ");
+                        List<string> range = Iteration();
+                        foreach (string item in range)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.WriteLine("properties are ");
+                        Type t = Type.GetType("MyPractice.Class1");
+                        PropertyInfo[] properties1 = t.GetProperties();
+                        Console.WriteLine(properties1);
+                        foreach (PropertyInfo property in properties1)
+                        {
+                            Console.WriteLine("in loop");
+                            Console.WriteLine(property.Name);
+                            Console.WriteLine("in loop");
+                        }
+                        //m1.properties();
+                        break;
+                    case 5:
+                        Console.WriteLine("Bye Have a Good Day");
+                        Console.ReadLine();
+                        exit = false;
+                        break;
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            } while (exit);
+
         }
     }
 
